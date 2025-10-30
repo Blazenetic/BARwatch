@@ -27,7 +27,6 @@ function widget:GetInfo()
         date = "2025-01-29",
         license = "GNU GPL v2 or later",
         layer = -10,  -- Low layer to avoid conflicts
-        -- this does not work, do not use: enabled = true,  -- Enabled by default for testing, does not work, causes widget to not run
     }
 end
 

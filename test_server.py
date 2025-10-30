@@ -204,17 +204,17 @@ class TestRunner:
         total_tests = len(phase1_results) + len(phase2_results)
         passed_tests = sum(phase1_results.values()) + sum(phase2_results.values())
 
-        print(f"\n╔══════════════════════════════════════════════════════════════╗")
-        print(f"║                       TEST RESULTS                           ║")
-        print(f"╠══════════════════════════════════════════════════════════════╣")
-        print(f"║  Passed:  {passed_tests}/{total_tests}  ({100*passed_tests//total_tests}%)                                     ║")
-        print(f"║  Failed:  {total_tests-passed_tests}/{total_tests}                                               ║")
-        print(f"║                                                              ║")
+        print(f"\n=================================================================")
+        print(f"                       TEST RESULTS")
+        print(f"=================================================================")
+        print(f"  Passed:  {passed_tests}/{total_tests}  ({100*passed_tests//total_tests}%)")
+        print(f"  Failed:  {total_tests-passed_tests}/{total_tests}")
+        print(f"")
         if passed_tests == total_tests:
-            print(f"║  Status: ✓ PHASE 1 & 2 VALIDATED - Ready for Phase 3       ║")
+            print(f"  Status: PASS - PHASE 1 & 2 VALIDATED - Ready for Phase 3")
         else:
-            print(f"║  Status: ✗ ISSUES FOUND - Check logs for details           ║")
-        print(f"╚══════════════════════════════════════════════════════════════╝")
+            print(f"  Status: FAIL - ISSUES FOUND - Check logs for details")
+        print(f"=================================================================")
 
     def run_phase1_tests(self):
         """Run Phase 1 (Socket Infrastructure) tests"""
@@ -308,10 +308,10 @@ class TestServer:
 
     def start(self):
         """Start the test server"""
-        print("╔══════════════════════════════════════════════════════════════╗")
-        print("║        BAR Live Data Export Widget - Test Server            ║")
-        print("║                    Phase 1 & 2 Validation                    ║")
-        print("╚══════════════════════════════════════════════════════════════╝")
+        print("=================================================================")
+        print("        BAR Live Data Export Widget - Test Server")
+        print("                    Phase 1 & 2 Validation")
+        print("=================================================================")
         print()
 
         self.server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -375,18 +375,18 @@ class TestServer:
         errors = stats['errors']
 
         print("\033[2J\033[H", end="")  # Clear screen and move cursor to top
-        print("╔══════════════════════════════════════════════════════════════╗")
-        print("║               BAR Widget Test Dashboard                      ║")
-        print("╠══════════════════════════════════════════════════════════════╣")
-        print(f"║ Connection: {conn_status:<50} ║")
-        print(f"║ Packets:    {packets:<50} ║")
-        print(f"║ Data Rate:  {data_rate:.1f} Hz{'':<44} ║")
+        print("=================================================================")
+        print("               BAR Widget Test Dashboard")
+        print("=================================================================")
+        print(f"Connection: {conn_status}")
+        print(f"Packets:    {packets}")
+        print(f"Data Rate:  {data_rate:.1f} Hz")
         if unit_stats:
-            print(f"║ Units:      {unit_stats['avg']:.0f} avg (min: {unit_stats['min']}, max: {unit_stats['max']}) {'':<14} ║")
+            print(f"Units:      {unit_stats['avg']:.0f} avg (min: {unit_stats['min']}, max: {unit_stats['max']})")
         else:
-            print(f"║ Units:      No data yet{'':<39} ║")
-        print(f"║ Errors:     {errors:<50} ║")
-        print("╚══════════════════════════════════════════════════════════════╝")
+            print("Units:      No data yet")
+        print(f"Errors:     {errors}")
+        print("=================================================================")
 
     def _accept_loop(self):
         """Accept incoming connections"""
