@@ -26,7 +26,6 @@ function widget:GetInfo()
         date = "2025-01-29",
         license = "GNU GPL v2 or later",
         layer = -10,  -- Low layer to avoid conflicts
-        enabled = true,  -- Enabled by default for testing
     }
 end
 
@@ -246,7 +245,7 @@ local function CollectUnitData()
                     unitData.states = {
                         fireState = states.firestate or 0,
                         moveState = states.movestate or 0,
-                        repeatState = states.repeat or false,
+                        repeatState = states["repeat"] or false, -- Bracket notation, to access table keys that happen to be Lua keywords ingame, being 'repeat'.
                         cloakState = states.cloak or false,
                         activeState = states.active or true,
                     }
